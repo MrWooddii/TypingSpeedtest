@@ -66,7 +66,7 @@ public class gameController implements Initializable {
     }
 
     //startet, sobald ein Buchstabe in "enteredWord" eingegeben wird
-    //TODO: play button abändern, Stand jetzt startet er auch als erstes das Game
+    //TODO: play button abändern, Stand jetzt startet er auch als erstes das Game (wirft Exception)
     @FXML
     public void startGame(KeyEvent keyEvent) throws InterruptedException{
 
