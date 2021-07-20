@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import main.Main;
 
 import java.io.*;
@@ -162,7 +161,6 @@ public class GameController implements Initializable {
     private void changeToHighscoreScreen() throws IOException{
 
         Main m = new Main();
-        Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/Views/saveHighscoreScreen.fxml"));
         Parent root = loader.load();
@@ -171,7 +169,6 @@ public class GameController implements Initializable {
         controller.setData(Integer.parseInt(wpmLabel.getText()), correctKeystrokes, wrongKeystrokes, (int) accuracy);
 
         m.getStage().setScene(new Scene(root));
-
 
     }
 
@@ -192,11 +189,14 @@ public class GameController implements Initializable {
         timer.cancel();
         gameStarted = false;
         enteredWord.requestFocus();
-
     }
 
     private void setWords() {
         firstWord.setText(wordList.get((int) (Math.random() * wordList.size())));
-        secondWord.setText(wordList.get((int) (Math.random() * wordList.size())));
+        //not two same words
+        do {
+            secondWord.setText(wordList.get((int) (Math.random() * wordList.size())));
+        } while(firstWord.getText().equals(secondWord.getText()));
+
     }
 }
