@@ -33,7 +33,6 @@ public class WelcomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("welcome init");
         Player player = Database.getInstance().getHighscorePlayer();
 
         if(player == null) {
