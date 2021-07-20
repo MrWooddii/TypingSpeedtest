@@ -20,7 +20,7 @@ import java.util.*;
 
 public class GameController implements Initializable {
 
-    private final int TIME_RESTRICTION = 60;
+    private final int TIME_RESTRICTION = 5;
 
     private final List<String> wordList = new ArrayList<>();
 
@@ -96,6 +96,9 @@ public class GameController implements Initializable {
             }
 
             if(keyEvent.getCode().equals(KeyCode.SPACE)) {
+
+                if(enteredWord.getText().trim().length() <= 0) return;
+
                 checkWord(enteredWord.getText().trim(), firstWord.getText());
 
                 //if no wrong keystrokes are registered, accuracy is 100 %
