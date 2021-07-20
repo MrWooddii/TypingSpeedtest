@@ -1,26 +1,29 @@
 package main.Controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.text.Text;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import main.Main;
+import main.Model.Database;
+import main.Model.Player;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class welcomeController {
+public class welcomeController implements Initializable {
 
     @FXML
-    private Text keystrokes;
+    private Label nameLabel;
     @FXML
-    private Text wpm;
+    private Label correctKeystrokesLabel;
     @FXML
-    private Text invalid;
+    private Label wrongKeystrokesLabel;
     @FXML
-    private Text name;
+    private Label wpmLabel;
+    @FXML
+    private Label accuracyLabel;
+
 
     @FXML
     public void playGame() throws IOException {
@@ -28,4 +31,19 @@ public class welcomeController {
         m.changeScene("Views/game.fxml");
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Player player = Database.getInstance().getHighscorePlayer();
+
+        if(player == null) {
+            player = new Player("Be the first!", 0, 0, 0, 0);
+        }
+
+        nameLabel.setText(player.getName());
+        correctKeystrokesLabel.setText(String.valueOf(player.getCorrectKeystrokes()));
+        wrongKeystrokesLabel.setText(String.valueOf(player.getWrongKeystrokes()));
+        wpmLabel.setText(String.valueOf(player.getWpm()));
+        accuracyLabel.setText(String.valueOf(player.getAccuracy()));
+
+    }
 }

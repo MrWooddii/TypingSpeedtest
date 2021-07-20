@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import main.Main;
+import main.Model.Database;
+
 import java.io.*;
 import java.net.URL;
 import java.util.*;
@@ -150,6 +153,12 @@ public class gameController implements Initializable {
             wrongKeystrokes += length;
             wrongKeystrokesLabel.setText("" + wrongKeystrokes);
         }
+    }
+
+    @FXML
+    private void changeToHighscoreScreen() throws IOException{
+        Main m = new Main();
+        m.changeScene("Views/saveHighscoreScreen.fxml");
     }
 
     @FXML

@@ -4,23 +4,56 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Text?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.welcomeController">
    <children>
-      <Circle fill="DODGERBLUE" layoutX="487.0" layoutY="323.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="295.0" layoutY="323.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="109.0" layoutY="323.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="playButton" layoutX="274.0" layoutY="127.0" mnemonicParsing="false" onAction="#playGame" text="Play" />
+      <Button fx:id="playButton" layoutX="275.0" layoutY="101.0" mnemonicParsing="false" onAction="#playGame" text="Play" />
       <Label layoutX="267.0" layoutY="55.0" text="Welcome!" />
-      <Label layoutX="267.0" layoutY="200.0" text="Highscore" />
-      <Label layoutX="469.0" layoutY="348.0" text="invalid" />
-      <Label layoutX="280.0" layoutY="348.0" text="wpm" />
-      <Label layoutX="97.0" layoutY="348.0" text="kpm" />
-      <Text fx:id="keystrokes" layoutX="81.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="56.0" />
-      <Text fx:id="wpm" layoutX="266.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="56.0" />
-      <Text fx:id="invalid" layoutX="459.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="56.0" />
-      <Text fx:id="name" layoutX="268.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="53.0" />
+      <AnchorPane layoutX="14.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Circle fill="WHITE" layoutX="100.0" layoutY="100.0" radius="56.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="44.0" />
+            <Label layoutX="85.0" layoutY="128.0" text="name" />
+            <Label fx:id="nameLabel" alignment="CENTER" layoutX="51.0" layoutY="87.0" prefHeight="27.0" prefWidth="98.0" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="194.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Circle fill="WHITE" layoutX="100.0" layoutY="100.0" radius="56.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="correctKeystrokesLabel" alignment="CENTER" layoutX="50.0" layoutY="71.0" prefHeight="27.0" prefWidth="43.0" text="0" textAlignment="CENTER" textFill="#2cae08">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="87.0" layoutY="133.0" text="wpm" />
+            <Label fx:id="keystrokes11" alignment="CENTER" layoutX="79.0" layoutY="71.0" prefHeight="27.0" prefWidth="43.0" text="|" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="wrongKeystrokesLabel" alignment="CENTER" layoutX="107.0" layoutY="71.0" prefHeight="27.0" prefWidth="43.0" text="0" textAlignment="CENTER" textFill="#eb0505">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="wpmLabel" alignment="CENTER" layoutX="55.0" layoutY="110.0" prefHeight="17.0" prefWidth="90.0" text="0" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="394.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Circle fill="WHITE" layoutX="100.0" layoutY="100.0" radius="56.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="44.0" />
+            <Label layoutX="71.0" layoutY="131.0" text="accuracy %" />
+            <Label fx:id="accuracyLabel" alignment="CENTER" layoutX="71.0" layoutY="87.0" prefHeight="27.0" prefWidth="59.0" text="100" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button layoutX="257.0" layoutY="161.0" mnemonicParsing="false" text="Highscores" />
    </children>
 </AnchorPane>

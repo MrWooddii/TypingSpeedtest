@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.saveHighscoreController">
+   <children>
+      <Label alignment="CENTER" layoutX="11.0" layoutY="32.0" prefHeight="17.0" prefWidth="580.0" text="Congratulations! You got a nice score! Please enter your name to save your result in the highscore list." textAlignment="CENTER" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <TextField fx:id="enterName" layoutX="226.0" layoutY="94.0" promptText="Enter name" />
+      <Label fx:id="wpmLabel" layoutX="231.0" layoutY="143.0" prefHeight="17.0" prefWidth="149.0" />
+      <Label fx:id="correctKeystrokesLabel" layoutX="231.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" textFill="#01a814" />
+      <Label fx:id="wrongKeystrokesLabel" layoutX="231.0" layoutY="223.0" prefHeight="17.0" prefWidth="149.0" textFill="#ff2b2b" />
+      <Label fx:id="accuracyLabel" layoutX="231.0" layoutY="261.0" prefHeight="17.0" prefWidth="149.0" />
+      <Label layoutX="77.0" layoutY="143.0" prefHeight="17.0" prefWidth="149.0" text="Words per minute" />
+      <Label layoutX="77.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" text="correct keystrokes" />
+      <Label layoutX="77.0" layoutY="223.0" prefHeight="17.0" prefWidth="149.0" text="wrong keystrokes" />
+      <Label layoutX="77.0" layoutY="261.0" prefHeight="17.0" prefWidth="149.0" text="accuracy" />
+      <Button fx:id="saveButton" layoutX="280.0" layoutY="335.0" mnemonicParsing="false" onAction="#saveHighscore" text="Save" />
+      <Label layoutX="77.0" layoutY="98.0" prefHeight="17.0" prefWidth="149.0" text="Name" />
+   </children>
+</AnchorPane>

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import main.Model.Database;
 
 import java.io.IOException;
 
@@ -22,6 +23,18 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("images/icon.png"));
         primaryStage.setScene(new Scene(root, 600, 450));
         primaryStage.show();
+    }
+
+    @Override
+    public void init() throws Exception {
+        super.init();
+        Database.getInstance().open();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        Database.getInstance().close();
     }
 
     public void changeScene(String fxml) throws IOException {
