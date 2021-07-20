@@ -20,7 +20,7 @@ import java.util.*;
 
 public class GameController implements Initializable {
 
-    private final int TIME_RESTRICTION = 5;
+    private final int TIME_RESTRICTION = 60;
 
     private final List<String> wordList = new ArrayList<>();
 
@@ -106,8 +106,7 @@ public class GameController implements Initializable {
 
                 accuracyLabel.setText("" + (int) accuracy);
 
-                firstWord.setText(secondWord.getText());
-                secondWord.setText(wordList.get((int) (Math.random() * wordList.size())));
+                setWords();
                 enteredWord.clear();
             }
 
@@ -195,11 +194,16 @@ public class GameController implements Initializable {
     }
 
     private void setWords() {
-        firstWord.setText(wordList.get((int) (Math.random() * wordList.size())));
+
+        if(gameStarted) {
+            firstWord.setText(secondWord.getText());
+        } else {
+            firstWord.setText(wordList.get((int) (Math.random() * wordList.size())));
+        }
+
         //not two same words
         do {
             secondWord.setText(wordList.get((int) (Math.random() * wordList.size())));
-        } while(firstWord.getText().equals(secondWord.getText()));
-
+        } while((firstWord.getText().equals(secondWord.getText())));
     }
 }
