@@ -21,8 +21,8 @@ public class Database {
     private Database() {};
 
     public Player getHighscorePlayer() {
-        try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + TABLE_PLAYER + " ORDER BY " + COLUMN_WPM + " ASC, "
-                + COLUMN_CORRECT_KEYSTROKES + " ASC, " + COLUMN_WRONG_KEYSTROKES + " ASC, " + COLUMN_ACCURACY + " ASC LIMIT 1")) {
+        try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + TABLE_PLAYER + " ORDER BY " + COLUMN_WPM + " DESC, "
+                + COLUMN_CORRECT_KEYSTROKES + " DESC, " + COLUMN_WRONG_KEYSTROKES + " DESC, " + COLUMN_ACCURACY + " DESC LIMIT 1")) {
             ResultSet result = ps.executeQuery();
 
             Player player = new Player();
@@ -54,9 +54,6 @@ public class Database {
             System.out.println("Could not save Highscore: " + e.getMessage());
         }
     }
-
-
-
 
     public static Database getInstance() {
         return instance;

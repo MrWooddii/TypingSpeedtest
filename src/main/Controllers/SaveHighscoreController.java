@@ -1,5 +1,6 @@
 package main.Controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +14,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class saveHighscoreController implements Initializable {
+public class SaveHighscoreController{
+
+    private int wpm;
+    private int correctKeystrokes;
+    private int wrongKeystrokes;
+    private int accuracy;
 
     @FXML
     private TextField enterName;
@@ -30,18 +36,22 @@ public class saveHighscoreController implements Initializable {
 
     @FXML
     private void saveHighscore(ActionEvent event) throws IOException {
-        Database.getInstance().saveHighscore(enterName.getText(), 200, 111, 11, 100);
+        Database.getInstance().saveHighscore(enterName.getText(), wpm, correctKeystrokes, wrongKeystrokes, accuracy);
 
         Main m = new Main();
         m.changeScene("Views/welcomeScreen.fxml");
-
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        wpmLabel.setText("" + 200);
-        correctKeystrokesLabel.setText("" + 111);
-        wrongKeystrokesLabel.setText("" + 11);
-        accuracyLabel.setText("" + 100);
+    public void setData(int wpm, int correctKeystrokes, int wrongKeystrokes, int accuracy) {
+        this.wpm = wpm;
+        this.correctKeystrokes = correctKeystrokes;
+        this.wrongKeystrokes = wrongKeystrokes;
+        this.accuracy = accuracy;
+
+        wpmLabel.setText("" + wpm);
+        correctKeystrokesLabel.setText("" + correctKeystrokes);
+        wrongKeystrokesLabel.setText("" + wrongKeystrokes);
+        accuracyLabel.setText("" + accuracy);
+
     }
 }

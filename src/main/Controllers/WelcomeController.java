@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class welcomeController implements Initializable {
+public class WelcomeController implements Initializable {
 
     @FXML
     private Label nameLabel;
@@ -33,6 +33,7 @@ public class welcomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("welcome init");
         Player player = Database.getInstance().getHighscorePlayer();
 
         if(player == null) {
@@ -44,6 +45,5 @@ public class welcomeController implements Initializable {
         wrongKeystrokesLabel.setText(String.valueOf(player.getWrongKeystrokes()));
         wpmLabel.setText(String.valueOf(player.getWpm()));
         accuracyLabel.setText(String.valueOf(player.getAccuracy()));
-
     }
 }

@@ -50,4 +50,9 @@ public class Main extends Application {
     public static Stage getStage() {
         return stage;
     }
+
+    public FXMLLoader getLoader(String fxml) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        return loader;
+    }
 }

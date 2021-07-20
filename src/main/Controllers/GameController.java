@@ -2,21 +2,24 @@ package main.Controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import main.Main;
-import main.Model.Database;
 
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 
-public class gameController implements Initializable {
+public class GameController implements Initializable {
 
     private final int TIME_RESTRICTION = 60;
 
@@ -157,8 +160,19 @@ public class gameController implements Initializable {
 
     @FXML
     private void changeToHighscoreScreen() throws IOException{
+
         Main m = new Main();
-        m.changeScene("Views/saveHighscoreScreen.fxml");
+        Stage stage = new Stage();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/Views/saveHighscoreScreen.fxml"));
+        Parent root = loader.load();
+
+        SaveHighscoreController controller = loader.getController();
+        controller.setData(Integer.parseInt(wpmLabel.getText()), correctKeystrokes, wrongKeystrokes, (int) accuracy);
+
+        m.getStage().setScene(new Scene(root));
+
+
     }
 
     @FXML
@@ -185,6 +199,4 @@ public class gameController implements Initializable {
         firstWord.setText(wordList.get((int) (Math.random() * wordList.size())));
         secondWord.setText(wordList.get((int) (Math.random() * wordList.size())));
     }
-
-
 }
