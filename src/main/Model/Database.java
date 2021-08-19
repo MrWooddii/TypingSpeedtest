@@ -46,9 +46,13 @@ public class Database {
 
     public void saveHighscore(String name, int wpm, int correctKeystrokes, int wrongKeystrokes, int accuracy) {
         try (PreparedStatement ps = conn.prepareStatement("INSERT INTO " + TABLE_PLAYER + " (" + COLUMN_NAME + ", " + COLUMN_WPM + ", " + COLUMN_CORRECT_KEYSTROKES + ", " + COLUMN_WRONG_KEYSTROKES + ", " + COLUMN_ACCURACY +
-                ") VALUES ('" + name + "', " + wpm + ", " + correctKeystrokes + ", " + wrongKeystrokes + ", " + accuracy + ");")) {
+                ") VALUES (?, ?, ?, ?, ?)")) {
+            ps.setString(1, name);
+            ps.setInt(2, wpm);
+            ps.setInt(3, correctKeystrokes);
+            ps.setInt(4, wrongKeystrokes);
+            ps.setInt(5, accuracy);
             ps.execute();
-            ps.close();
 
         } catch (SQLException e) {
             System.out.println("Could not save Highscore: " + e.getMessage());
