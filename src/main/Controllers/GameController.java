@@ -145,13 +145,13 @@ public class GameController implements Initializable {
 
     private void checkWord(String enteredWord, String correctWord) {
 
-        //Shift and space count as one additional keystroke each
+        //Shift und Leertaste zählen als zusätzlicher Tastenanschlag
         int length = Character.isUpperCase(enteredWord.charAt(0)) ? enteredWord.length() + 2 : enteredWord.length() + 1;
 
         if(enteredWord.equals(correctWord)) {
             correctKeystrokes += length;
             correctKeystrokesLabel.setText("" + correctKeystrokes);
-            //one word per minute is defined as 5 keystrokes == one word
+            //Ein Wort ist definiert als "5 Tastenanschläge = 1 Wort"
             wpmLabel.setText("" + (correctKeystrokes / 5));
         } else {
             wrongKeystrokes += length;
@@ -201,7 +201,7 @@ public class GameController implements Initializable {
             firstWord.setText(wordList.get((int) (Math.random() * wordList.size())));
         }
 
-        //not two same words
+        //es dürfen nicht zweimal die selben Wörter hintereinander ausgewählt werden
         do {
             secondWord.setText(wordList.get((int) (Math.random() * wordList.size())));
         } while((firstWord.getText().equals(secondWord.getText())));
